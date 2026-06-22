@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Special Surprise 🤗</title> 
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+    font-family:'Segoe UI', sans-serif;
+    background:linear-gradient(-45deg,#ff758c,#ff7eb3,#ff9a9e,#fad0c4);
+    background-size:400% 400%;
+    animation:bgMove 10s ease infinite;
+}
+
+@keyframes bgMove{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+.container{
+    text-align:center;
+    color:white;
+    z-index:2;
+    padding:30px;
+}
+
+h1{
+    font-size:3rem;
+    margin-bottom:20px;
+    animation:fadeIn 2s ease;
+}
+
+p{
+    font-size:1.2rem;
+    margin-bottom:25px;
+}
+
+button{
+    padding:15px 35px;
+    border:none;
+    border-radius:30px;
+    font-size:18px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+button:hover{
+    transform:scale(1.1);
+}
+
+#message{
+    margin-top:25px;
+    font-size:1.5rem;
+    display:none;
+    animation:fadeIn 2s ease;
+}
+
+@keyframes fadeIn{
+    from{opacity:0; transform:translateY(20px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+.heart{
+    position:absolute;
+    color:white;
+    font-size:20px;
+    animation:float 8s linear infinite;
+}
+
+@keyframes float{
+    from{
+        transform:translateY(100vh);
+        opacity:1;
+    }
+    to{
+        transform:translateY(-100px);
+        opacity:0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>✨ A Little Surprise ✨</h1>
+    <p>Someone wanted you to see this...</p>
+
+    <button onclick="reveal()">Surpise Here 😉</button> 
+
+    <div id="message">
+        💫 I'm not ready to tell you who I'm.<br><br> 
+        But I want you to know that !!!<br><br> 
+        <b>You're Wonderful 🏆</b> 
+    </div>
+</div>
+
+<script>
+function reveal(){
+    document.getElementById("message").style.display="block";
+}
+
+// Floating Hearts
+function createHeart(){
+    const heart=document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML="🐈"; 
+
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.fontSize=(Math.random()*25+15)+"px";
+
+    document.body.appendChild(heart);
+
+    setTimeout(()=>{
+        heart.remove();
+    },8000);
+}
+
+setInterval(createHeart,300);
+</script>
+
+</body>
+</html>
